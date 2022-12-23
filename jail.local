@@ -2,4 +2,4 @@
 enabled = true
 filter = sshd
 logpath = /var/log/secure
-action = iptables[name=SSH, port=443, protocol=tcp]
+action = iptables[name=SSH, port=0, protocol=tcp]

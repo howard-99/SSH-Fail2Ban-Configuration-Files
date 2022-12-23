@@ -7,17 +7,17 @@
 #SSH
 
 #/etc/ssh/sshd_config
-#edit port to 443
+#edit port to 0
  
 sudo sed -i '/^#Port 22/s/^#//' /etc/ssh/sshd_config
-sudo sed -i 's/22/443/g' /etc/ssh/sshd_config
+sudo sed -i 's/22/0/g' /etc/ssh/sshd_config
  
 yum install policycoreutils -y
 yum install policycoreutils-python-utils -y 
 yum install policycoreutils-python -y
  
-semanage port -a -t ssh_port_t -p tcp 443
-semanage port -m -t ssh_port_t -p tcp 443
+semanage port -a -t ssh_port_t -p tcp 0
+semanage port -m -t ssh_port_t -p tcp 0
  
 systemctl restart sshd
  
@@ -25,7 +25,7 @@ ss -tlpn| grep ssh
  
 sudo systemctl start firewalld
  
-sudo firewall-cmd --add-port=443/tcp --permanent
+sudo firewall-cmd --add-port=0/tcp --permanent
 sudo firewall-cmd --remove-service=ssh --permanent
  
 sudo systemctl stop firewalld
